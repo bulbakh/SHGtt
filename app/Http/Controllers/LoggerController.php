@@ -23,7 +23,6 @@ class LoggerController extends Controller
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
-        response('for logging» was sent via email на email@exaple.com');
     }
 
     public function logToAll(): void
