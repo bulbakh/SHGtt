@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LoggerFactory;
+use App\Models\LoggerFactoryRegistry;
 use Illuminate\Routing\Controller;
 
 class LoggerController extends Controller
 {
-    private string $message = 'Message for logging';
+    private string $message;
+    private LoggerFactoryRegistry $factoryRegistry;
+
+    public function __construct()
+    {
+        $this->factoryRegistry = app(LoggerFactoryRegistry::class);
+        $this->message = 'Message for logging';
+    }
 
     public function log(): void
     {
@@ -19,7 +26,9 @@ class LoggerController extends Controller
     public function logTo(string $type): void
     {
         try {
-            LoggerFactory::create($type)->send($this->message);
+            $loggerFactory = $this->factoryRegistry->getFactory($type);
+            $logger = $loggerFactory->createLogger();
+            $logger->send($this->message);
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
@@ -27,12 +36,14 @@ class LoggerController extends Controller
 
     public function logToAll(): void
     {
-        foreach (LoggerFactory::createAll() as $logger) {
-            try {
+        try {
+            $loggerFactories = $this->factoryRegistry->getFactories();
+            foreach ($loggerFactories as $loggerFactory) {
+                $logger = $loggerFactory->createLogger();
                 $logger->send($this->message);
-            } catch (\Exception $e) {
-                echo $e->getMessage();
             }
+        } catch (\Exception $e) {
+            echo $e->getMessage();
         }
     }
 }

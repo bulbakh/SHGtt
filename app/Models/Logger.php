@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Interfaces\LoggerFactoryInterface;
 use App\Interfaces\LoggerInterface;
 
 abstract class Logger implements LoggerInterface
@@ -12,7 +13,10 @@ abstract class Logger implements LoggerInterface
 
     public function sendByLogger(string $message, string $loggerType): void
     {
-        LoggerFactory::create($loggerType)->send($message);
+        $factoryRegistry = app(LoggerFactoryRegistry::class);
+        $loggerFactory = $factoryRegistry->getFactory($loggerType);
+        $logger = $loggerFactory->createLogger();
+        $logger->send($message);
     }
 
     public function getType(): string
