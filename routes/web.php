@@ -7,3 +7,7 @@ Route::controller(LoggerController::class)->group(function () {
     Route::get('/log/all', 'logToAll');
     Route::get('/log/{to}', 'logTo');
 });
+
+Route::get('/', function () {
+    return redirect('/example.html');
+});
