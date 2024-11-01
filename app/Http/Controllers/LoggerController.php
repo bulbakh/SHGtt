@@ -36,14 +36,8 @@ class LoggerController extends Controller
 
     public function logToAll(): void
     {
-        try {
-            $loggerFactories = $this->factoryRegistry->getFactories();
-            foreach ($loggerFactories as $loggerFactory) {
-                $logger = $loggerFactory->createLogger();
-                $logger->send($this->message);
-            }
-        } catch (\Exception $e) {
-            echo $e->getMessage();
+        foreach ($this->factoryRegistry->getFactoriesTypes() as $type) {
+            $this->logTo($type);
         }
     }
 }

@@ -43,4 +43,9 @@ class LoggerFactoryRegistry
     {
         return $this->factories ?? [];
     }
+
+    public function getFactoriesTypes(): array
+    {
+        return array_keys($this->getFactories());
+    }
 }
