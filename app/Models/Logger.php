@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Interfaces\LoggerFactoryInterface;
 use App\Interfaces\LoggerInterface;
 
 abstract class Logger implements LoggerInterface

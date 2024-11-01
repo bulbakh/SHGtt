@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Providers;
+
 use App\Models\LoggerFactoryRegistry;
 use Illuminate\Support\ServiceProvider;
 
 class LoggerServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
-        $this->app->singleton(LoggerFactoryRegistry::class, function ($app) {
-            return new LoggerFactoryRegistry();
+        $this->app->singleton(LoggerFactoryRegistry::class, function () {
+            return new LoggerFactoryRegistry;
         });
     }
 }

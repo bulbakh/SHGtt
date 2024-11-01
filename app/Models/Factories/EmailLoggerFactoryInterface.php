@@ -15,6 +15,6 @@ class EmailLoggerFactoryInterface implements LoggerFactoryInterface
 
     public function createLogger(): LoggerInterface
     {
-        return new EmailLogger();
+        return new EmailLogger;
     }
 }

@@ -15,6 +15,6 @@ class DbLoggerFactoryInterface implements LoggerFactoryInterface
 
     public function createLogger(): LoggerInterface
     {
-        return new DbLogger();
+        return new DbLogger;
     }
 }

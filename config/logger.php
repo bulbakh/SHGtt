@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'default' => env('LOGGER_CHANNEL', 'email'),
+    'default' => env('LOGGER_TYPE', 'email'),
     'email' => env('LOGGER_EMAIL', 'email@exaple.com'),
 ];

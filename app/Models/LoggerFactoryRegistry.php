@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use App\Interfaces\LoggerFactoryInterface;
 use InvalidArgumentException;
 
@@ -15,14 +16,14 @@ class LoggerFactoryRegistry
 
     private function registerFactories(): void
     {
-        $factoryDirectory = __DIR__ . '/Factories/';
+        $factoryDirectory = __DIR__.'/Factories/';
         foreach (scandir($factoryDirectory) as $filename) {
             if ($filename === '.' || $filename === '..') {
                 continue;
             }
-            $factoryClass = 'App\\Models\\Factories\\' . basename($filename, '.php');
+            $factoryClass = 'App\\Models\\Factories\\'.basename($filename, '.php');
             if (class_exists($factoryClass)) {
-                $this->addFactory($factoryClass::getType(), new $factoryClass());
+                $this->addFactory($factoryClass::getType(), new $factoryClass);
             }
         }
     }
@@ -32,14 +33,18 @@ class LoggerFactoryRegistry
         $this->factories[$type] = $factory;
     }
 
-    public function getFactory(string $type): ?LoggerFactoryInterface
+    /**
+     * @throws InvalidArgumentException
+     */
+    public function getFactory(string $type): LoggerFactoryInterface
     {
         return $this->factories[$type] ?? throw new InvalidArgumentException("Invalid logger type «{$type}».");
     }
+
     /**
      * @return LoggerFactoryInterface[]
      */
-    public function getFactories(): ?array
+    public function getFactories(): array
     {
         return $this->factories ?? [];
     }

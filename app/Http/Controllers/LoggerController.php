@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LoggerFactoryRegistry;
+use Exception;
 use Illuminate\Routing\Controller;
 
 class LoggerController extends Controller
@@ -19,7 +20,7 @@ class LoggerController extends Controller
     public function log(): void
     {
         $type = config('logger.default');
-        echo "default type used: {$type}.<br>";
+        echo "default type used: $type.<br>";
         $this->logTo($type);
     }
 
@@ -29,7 +30,7 @@ class LoggerController extends Controller
             $loggerFactory = $this->factoryRegistry->getFactory($type);
             $logger = $loggerFactory->createLogger();
             $logger->send($this->message);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
     }

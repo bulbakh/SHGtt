@@ -15,6 +15,6 @@ class FileLoggerFactoryInterface implements LoggerFactoryInterface
 
     public function createLogger(): LoggerInterface
     {
-        return new FileLogger();
+        return new FileLogger;
     }
 }
