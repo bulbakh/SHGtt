@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Example</title>
+    <style>
+        li {
+            margin-bottom: 10px;
+            font-size: 18px;
+            list-style-type: none;
+        }
+
+        div {
+            float: left;
+            width: 30%;
+            height: 100%;
+            border: 1px solid black;
+            padding-left: 20px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<div style="width: 30%;">
+    <p>Запит:</p>
+    <li><a href="/log" target="content">/log</a></li>
+    <li><a href="/log/email" target="content">/log/email</a></li>
+    <li><a href="/log/db" target="content">/log/db</a></li>
+    <li><a href="/log/file" target="content">/log/file</a></li>
+    <li><a href="/log/all" target="content">/log/all</a></li>
+    <li><a href="/log/invalid" target="content">/log/invalid</a></li>
+    <li><a href="/invalid" target="content">/invalid</a></li>
+</div>
+<div style="width: 60%;">
+    <p>Результат:</p>
+    <iframe src="about:blank" name="content" frameborder="0" width="100%" height="100%"></iframe>
+</div>
+</html>
