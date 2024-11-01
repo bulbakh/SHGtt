@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Models\Factories;
+namespace App\Logger\Factories;
 
 use App\Interfaces\LoggerFactoryInterface;
 use App\Interfaces\LoggerInterface;
-use App\Models\Loggers\DbLogger;
+use App\Logger\Loggers\FileLogger;
 
-class DbLoggerFactoryInterface implements LoggerFactoryInterface
+class FileLoggerFactoryInterface implements LoggerFactoryInterface
 {
     public static function getType(): string
     {
-        return 'db';
+        return 'file';
     }
 
     public function createLogger(): LoggerInterface
     {
-        return new DbLogger;
+        return new FileLogger;
     }
 }

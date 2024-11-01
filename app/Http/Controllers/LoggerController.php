@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LoggerFactoryRegistry;
+use App\Logger\LoggerFactoryRegistry;
 use Exception;
 use Illuminate\Routing\Controller;
 

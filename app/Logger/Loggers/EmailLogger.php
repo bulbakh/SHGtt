@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Loggers;
+namespace App\Logger\Loggers;
 
-use App\Models\Logger;
+use App\Logger\Logger;
 
 class EmailLogger extends Logger
 {

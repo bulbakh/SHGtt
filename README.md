@@ -11,7 +11,7 @@ composer create project bulbakh/shg_tt
 ## Notes
 ### Файли
 - Інтерфейси: app/Interfaces
-- Моделі, фабрики: app/Models
+- Моделі, фабрики: app/Logger
 - Провайдер фабрик: app/Providers/LoggerServiceProvider.php 
 - Контролер: app/Http/Controllers/LoggerController.php
 - Конфігураційний файл: app/config/logger.php
@@ -23,8 +23,8 @@ LOGGER_EMAIL="email@exaple.com"
 - Тести: tests/Feature/LoggerTest.php
 
 ### Додавання нового типу логів
-1. Додати новий логер (app/Models/Loggers)
-2. Додати нову фабрику (app/Models/Factories)
+1. Додати новий логер (app/Logger/Loggers)
+2. Додати нову фабрику (app/Logger/Factories)
    Існуючий функціонал змінювати не потрібно
 
 ### Приклади http-запитів

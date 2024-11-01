@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Logger;
 
 use App\Interfaces\LoggerFactoryInterface;
 use InvalidArgumentException;
@@ -21,7 +21,7 @@ class LoggerFactoryRegistry
             if ($filename === '.' || $filename === '..') {
                 continue;
             }
-            $factoryClass = 'App\\Models\\Factories\\'.basename($filename, '.php');
+            $factoryClass = 'App\\Logger\\Factories\\'.basename($filename, '.php');
             if (class_exists($factoryClass)) {
                 $this->addFactory($factoryClass::getType(), new $factoryClass);
             }

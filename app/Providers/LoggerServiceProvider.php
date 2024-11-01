@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\LoggerFactoryRegistry;
+use App\Logger\LoggerFactoryRegistry;
 use Illuminate\Support\ServiceProvider;
 
 class LoggerServiceProvider extends ServiceProvider
