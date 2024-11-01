@@ -17,14 +17,15 @@ composer create project bulbakh/shg_tt
 - Конфігураційний файл: app/config/logger.php
 - Налаштування змінних оточення: .env
 ```
-LOGGER_CHANNEL="email"
+LOGGER_TYPE="email"
 LOGGER_EMAIL="email@exaple.com"
 ```
-- Тести: tests/Feature/LoggerTest.php
+- Тести: tests/Feature/LoggerTest.php, tests/Unit/LoggerTest.php. 
 
 ### Додавання нового типу логів
 1. Додати новий логер (app/Logger/Loggers)
 2. Додати нову фабрику (app/Logger/Factories)
+
    Існуючий функціонал змінювати не потрібно
 
 ### Приклади http-запитів
